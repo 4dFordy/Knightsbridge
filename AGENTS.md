@@ -89,8 +89,8 @@ Launch target: **1 April 2027**.
    can **never be below 2.0×** of prize cost; blocked in the database and the app.
 3. **Weekly maximum.** Scheduling or go-live is blocked if it would exceed the weekly maximum (default 10).
 4. **No overselling.** Reserve entries in one transaction with a 10-minute hold; the hard cap (paid + postal) is
-   checked atomically and is safe under high concurrency. (See open question Q1 in `docs/OWNER_TODO.md` on
-   postal entries after "Sold out".)
+   checked atomically and is safe under high concurrency. **No postal reserve** (owner decision Q1): once the
+   cap is full, no more entries of either kind are accepted, and the terms say so.
 5. **Entries only on confirmed payment.** Paid entries are issued only after the gateway's **signed webhook**
    confirms payment and it is re-checked with the gateway's API. Never on a browser success message. Issuing
    is idempotent: unique entry numbers, no double-issuing if a webhook arrives twice.
@@ -108,7 +108,8 @@ Launch target: **1 April 2027**.
     Every message is true when sent, with no false urgency, and carries 18+ and the free-entry line.
     **No message goes to players without a second team member approving it.**
 11. **Free postal entry.** Same draw, same odds, same per-person limit as paid. One entry per envelope; must
-    arrive before close; logged by one staff member and **checked by a second**; scan stored; shown on every
+    arrive by the **same deadline as online entries** (the draw's close time, shown on every draw page) and while
+    the cap still has room; logged by one staff member and **checked by a second**; scan stored; shown on every
     draw page BEFORE purchase.
 12. **Verifiable draw** (section 9): commit-reveal with drand; two staff approvals to run; run exactly once.
 13. **Winner verification** (age, identity, GB location, not suspended) and a confirmation call before any
@@ -186,7 +187,8 @@ player look-up (limits, breaks, suspensions), sales pace alerts (section 10), sh
    confirmed entries plus logged postal entries.
 4. **My entries:** every draw entered, entry numbers, live sold count, countdown, then result and proof link.
 5. **Receipt email** (VAT shown) and, if opted in, a push: "You're in. 3 entries in the … draw, drawn Tue 20:00."
-6. **Cap reached:** "Sold out", buy button hidden. Postal handling: see Q1 in `docs/OWNER_TODO.md`.
+6. **Cap reached:** "Sold out", buy button hidden, and no further postal entries are accepted (owner decision Q1;
+   the handover's "postal entries still added" was changed because it would break the locked cap).
 
 ## 7. Payments
 - **Sandbox/test only** until the owner says otherwise. Live keys are added by the owner's developer in Vercel

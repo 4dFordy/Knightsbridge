@@ -21,7 +21,7 @@ const LOCKUPS: { variant: LogoVariant; title: string; use: string; width: number
 /** Internal page so the owner and designer can check every logo version against the brand book. */
 export default function BrandPage() {
   return (
-    <main className="mx-auto max-w-6xl space-y-12 px-4 py-10 sm:px-8">
+    <div className="mx-auto max-w-6xl space-y-12 px-4 py-10 sm:px-8">
       <header className="space-y-2">
         <h1 className="font-display text-4xl font-black">Logo check.</h1>
         <p className="max-w-prose text-muted">
@@ -94,6 +94,6 @@ export default function BrandPage() {
           ))}
         </ul>
       </section>
-    </main>
+    </div>
   );
 }
