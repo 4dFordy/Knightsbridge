@@ -7,6 +7,8 @@ assertDemoModeAllowed();
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  // Native password-hashing library: load it from node_modules at runtime, don't bundle it.
+  serverExternalPackages: ["@node-rs/argon2"],
 };
 
 export default nextConfig;

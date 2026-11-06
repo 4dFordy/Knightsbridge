@@ -43,3 +43,49 @@ model AuditLog {
   @@index([createdAt])
   @@map("audit_log")
 }
+
+/// A player account. Personal data: keep it out of the audit log (use the id only).
+model Player {
+  id              String          @id @default(cuid())
+  /// Always stored trimmed and lower-case, so it is unique regardless of capitals.
+  email           String          @unique
+  /// Argon2id hash. The password itself is never stored.
+  passwordHash    String          @map("password_hash")
+  firstName       String          @map("first_name")
+  lastName        String          @map("last_name")
+  dateOfBirth     DateTime        @map("date_of_birth") @db.Date
+  createdAt       DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt       DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+  /// Set when the player clicks the email link (Phase 3, needs an email provider).
+  emailVerifiedAt DateTime?       @map("email_verified_at") @db.Timestamptz(3)
+  /// Set when age/ID verification passes (Phase 4). No entries before this.
+  ageVerifiedAt   DateTime?       @map("age_verified_at") @db.Timestamptz(3)
+  sessions        PlayerSession[]
+
+  @@map("player")
+}
+
+/// A signed-in browser. The cookie holds a random token; only its SHA-256 hash is stored here.
+model PlayerSession {
+  id         String    @id
+  playerId   String    @map("player_id")
+  player     Player    @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  lastSeenAt DateTime  @default(now()) @map("last_seen_at") @db.Timestamptz(3)
+  expiresAt  DateTime  @map("expires_at") @db.Timestamptz(3)
+  revokedAt  DateTime? @map("revoked_at") @db.Timestamptz(3)
+
+  @@index([playerId])
+  @@map("player_session")
+}
+
+/// Sign-in attempts, used to slow down password guessing. Can be purged after 30 days.
+model SignInAttempt {
+  id        BigInt   @id @default(autoincrement())
+  email     String
+  succeeded Boolean
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@index([email, createdAt])
+  @@map("sign_in_attempt")
+}
