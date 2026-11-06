@@ -11,7 +11,7 @@ Status key: **OPEN** (needed now) · **LATER** (needed when we reach that phase)
 
 | # | Item | Why | Asked | Status |
 |---|---|---|---|---|
-| 1 | Check Vercel is connected to the GitHub repo | No preview link has appeared on pull request #1 | 2026-11-06 | OPEN |
+| 1 | Connect Vercel to the GitHub repo | Preview links on every pull request | 2026-11-06 | DONE: project `innit` in the bin-yousef team, London region, previews need a Vercel login |
 | 2 | Review and merge pull request #1 ("Update the brief") | Makes the repo match your handover | 2026-11-06 | OPEN |
 | 3 | Upload the logo files: `innit-wordmark-*`, the ticket symbol and the app icon | The handover says they're in `docs/brand/`, but they aren't in the repo yet | 2026-11-06 | OPEN |
 | 4 | Upload the reference screens (website: home, draw, checkout, winners; app: home, draw, "You're in", entries, live, limits; admin: dashboard, draw builder, protection) | The handover says they're in `docs/design/`; only two early home drafts are there | 2026-11-06 | OPEN |
@@ -105,6 +105,7 @@ Status key: **OPEN** (needed now) · **LATER** (needed when we reach that phase)
 
 | # | Item | Status |
 |---|---|---|
+| L0 | Upgrade Vercel to the **Pro** plan before launch (the free Hobby plan is for non-commercial use only) | LATER |
 | L1 | UK IPO trademark search: "Innit", the logo and the brand line | LATER |
 | L2 | **Domains**: .co.uk and .com | LATER |
 | L3 | Instagram and TikTok handles (18+, UK-targeted accounts) | LATER |
