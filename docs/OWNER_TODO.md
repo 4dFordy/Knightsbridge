@@ -15,7 +15,7 @@ Status key: **OPEN** (needed now) · **LATER** (needed when we reach that phase)
 | 2 | Review and merge pull requests #1 and #2 | Brief and app skeleton | 2026-11-06 | DONE |
 | 3 | Logo files | Supplied as the logo specification in the brand book; the logo is built in code from it | 2026-11-06 | DONE. Optional: the designer's PNG logo pack, for comparison |
 | 4 | Upload the reference screens (website: home, draw, checkout, winners; app: home, draw, "You're in", entries, live, limits; admin: dashboard, draw builder, protection) | The handover says they're in `docs/design/`; only two early home drafts are there | 2026-11-06 | OPEN |
-| 5 | **Find a developer to review** money / personal-data / draw / admin changes (none yet) | Needed before merging task 1.4 onwards; see "Finding a reviewer" below | 2026-11-06 | OPEN |
+| 5 | **Find a developer to review** money / personal-data / draw / admin changes (none yet) | Needed before merging task 1.4 onwards; see "Finding a reviewer" below | 2026-11-06 | OPEN. Note: pull request #5 (database and audit log) was merged before review; ask the developer to review it after the fact. |
 | 6 | Answer questions Q1–Q2 below | Q1 is a rule conflict; Q2 affects the draw-night timetable | 2026-11-06 | DONE |
 
 ## Questions and rule conflicts (Claude flagged these)
@@ -63,7 +63,7 @@ Until then Claude keeps building, labels every pull request that needs review, a
 | # | Item | Status |
 |---|---|---|
 | 3.1 | **Payment gateway sandbox account** (e.g. Stripe, Adyen, Checkout.com). First **ask the provider in writing whether they accept UK prize draws with a free postal entry route**, and what rolling reserve they'd hold. Some treat this business type as restricted | LATER |
-| 3.2 | Email sending account for receipts and alerts (e.g. Resend or Postmark) | LATER |
+| 3.2 | Email sending account for receipts, alerts, **email address confirmation and "forgot password"** (e.g. Resend or Postmark) | LATER |
 | 3.3 | Redis for entry holds (Upstash, via the Vercel Marketplace) | LATER |
 | 3.4 | Accountant to confirm VAT treatment: 20% included in the entry price (1/6 of each sale) | LATER |
 
@@ -136,6 +136,7 @@ Claude uses `[[SOLICITOR: ...]]` placeholders. Each one is listed here when adde
 | `[[SOLICITOR: odds statement]]` | Every draw page | LATER |
 | `[[SOLICITOR: 18+ statement]]` | Sign-up, draw pages, ads | LATER |
 | `[[SOLICITOR: privacy notice]]` | Sign-up, footer | LATER |
+| `[[SOLICITOR: sign-up 18+ and Great Britain confirmation]]` | Tick box on the Get in (sign-up) form | LATER |
 | `[[SOLICITOR: responsible play copy]]` | Limits, breaks, support pages | LATER |
 | `[[SOLICITOR: share captions]]` | Export packs, customer sharing | LATER |
 | `[[SOLICITOR: player message templates]]` (reminders, "new draws", sales-alert notifications) | Email and push | LATER |

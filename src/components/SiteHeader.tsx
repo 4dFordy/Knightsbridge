@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { brand } from "@/brand/brand";
-import { ACCOUNT_LINKS, SITE_NAV } from "@/brand/navigation";
+import { SITE_NAV } from "@/brand/navigation";
+import { AccountLinks } from "@/components/AccountLinks";
 import { Logo } from "@/components/Logo";
 import { NavLinks } from "@/components/NavLinks";
 import { SolicitorPlaceholder } from "@/components/SolicitorPlaceholder";
@@ -17,18 +18,7 @@ export function SiteHeader() {
           <NavLinks items={SITE_NAV} />
         </nav>
         <div className="flex items-center gap-2">
-          <Link
-            href={ACCOUNT_LINKS.signIn.href}
-            className="inline-flex min-h-11 items-center rounded-lg border border-line px-4 text-sm font-bold text-ivory hover:border-gold"
-          >
-            {ACCOUNT_LINKS.signIn.label}
-          </Link>
-          <Link
-            href={ACCOUNT_LINKS.getIn.href}
-            className="hidden min-h-11 items-center rounded-lg bg-button-gold px-4 text-sm font-bold text-night hover:bg-pale-gold sm:inline-flex"
-          >
-            {ACCOUNT_LINKS.getIn.label}
-          </Link>
+          <AccountLinks />
         </div>
       </div>
       <div className="border-t border-line bg-night">
