@@ -1,0 +1,45 @@
+// Innit database schema. Explain every change in plain English in the pull request.
+// Money is always integer pence. Times are stored in UTC.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AuditActorType {
+  PLAYER
+  STAFF
+  SYSTEM
+}
+
+/// Append-only record of every money movement, entry, admin action and draw event (AGENTS.md rule 17).
+/// Rows can never be updated or deleted: database triggers refuse it. Each row carries a SHA-256 hash of
+/// itself plus the previous row's hash, so any tampering breaks the chain and is detected.
+model AuditLog {
+  id         BigInt         @id @default(autoincrement())
+  createdAt  DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+  actorType  AuditActorType @map("actor_type")
+  /// Who did it: player or staff id, or a system job name.
+  actorId    String?        @map("actor_id")
+  /// What happened, e.g. "draw.published", "staff.login", "entry.issued".
+  action     String
+  entityType String?        @map("entity_type")
+  entityId   String?        @map("entity_id")
+  /// State before and after the change, for admin actions.
+  before     Json?
+  after      Json?
+  /// Extra context: request id, IP address, user agent.
+  meta       Json?
+  /// Set by the database, never by the app.
+  prevHash   String         @default("") @map("prev_hash")
+  hash       String         @default("")
+
+  @@index([entityType, entityId])
+  @@index([actorType, actorId])
+  @@index([createdAt])
+  @@map("audit_log")
+}

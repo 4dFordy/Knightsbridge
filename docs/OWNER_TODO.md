@@ -46,7 +46,7 @@ Until then Claude keeps building, labels every pull request that needs review, a
 
 | # | Item | Status |
 |---|---|---|
-| 1.1 | Test database: add **Neon** (Postgres) to the Vercel project via Vercel → Storage (Claude will send click-by-click steps) | LATER |
+| 1.1 | Test database: **Neon** (Postgres) added to the Vercel project | DONE 2026-11-06 |
 | 1.2 | `DEMO_MODE=true` for **Preview** only in Vercel | DONE by Claude (task 1.3) |
 | 1.3 | Your email address for the first **Owner** admin login, and an authenticator app on your phone (Google Authenticator, Microsoft Authenticator or 1Password) | LATER |
 | 1.4 | Names, emails and roles (Operations, Finance, Compliance, Support) of team members who need admin logins. You'll invite them yourself from the panel | LATER |
@@ -117,6 +117,7 @@ Until then Claude keeps building, labels every pull request that needs review, a
 
 | # | Item | Status |
 |---|---|---|
+| L00 | **Separate live database.** Neon is currently connected to Preview *and* Production, so both share one test database. Before launch, your developer creates a separate production database (London region) and connects it to Production only. Builds never change the production database automatically. | LATER (developer) |
 | L0 | Upgrade Vercel to the **Pro** plan before launch (the free Hobby plan is for non-commercial use only) | LATER |
 | L1 | UK IPO trademark search: "Innit", the logo and the brand line | LATER |
 | L2 | **Domains**: .co.uk and .com | LATER |

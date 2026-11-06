@@ -19,6 +19,19 @@ jobs:
     name: Lint, types, tests and build
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # A throwaway PostgreSQL database for the database tests.
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: innit
+          POSTGRES_PASSWORD: innit
+          POSTGRES_DB: innit_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U innit" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      TEST_DATABASE_URL: postgresql://innit:innit@localhost:5432/innit_test
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
