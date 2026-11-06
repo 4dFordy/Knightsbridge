@@ -28,10 +28,21 @@ Launch target: **1 April 2027**.
 - **Logo:** lower-case Montserrat Black wordmark "innit", gold dots on both i's, punched-ticket symbol.
   **No endorsement line.** Never show "A part of Knightsbridge Luxury Group", the K emblem, or any Knightsbridge
   branding anywhere in the product (website, app, emails, share images).
-- **Logo files:** use only the `innit-wordmark-*` files, the ticket symbol and the app icon in `docs/brand/`.
-  Never use files that include the endorsement line (`innit-horizontal-*`, `innit-stacked-*`, `innit-nav-*`).
-  If a needed version doesn't exist, ask the owner. If any reference shows the endorsement or K emblem, ignore
-  that part and flag it.
+- **Logo files and rules:** follow the **logo specification** (brand book appendix A1–A11,
+  `docs/brand/innit-brand-book-with-logo-spec-2026-10.pdf`). The logo is built in code from that spec
+  (`src/brand/logo/`) and served as SVG at `/logo/<file name>`; always use the `<Logo>` component, never redraw it.
+  - Lockups: **horizontal** (default: large header, emails, share images), **stacked** (avatars, story end cards,
+    splash), **wordmark** (where the ticket is already on screen), **nav** (website header and app top bar,
+    120–160 px wide), **ticket** alone, **app icon** (gold ticket on navy, 46% of the width, square file).
+  - Construction: ticket height 0.62× font size (horizontal), 0.70× (stacked), 0.66× (nav); gap 0.13× (0.07×
+    vertical for stacked); ticket centred on the letters; wordmark letter-spacing −0.02em; dotless ı with
+    separate round dots.
+  - Colours by ground: navy (ivory wordmark, gold dots, gold ticket), gold (night wordmark, ivory dots, night
+    ticket), ivory (navy wordmark, gold dots, navy ticket). Cut-outs are transparent, never filled.
+  - Clear space = punch-hole diameter. Horizontal minimum 160 px wide; below that, the ticket alone
+    (minimum 24 px tall). Never stretch, recolour, rotate, or place on a busy photo without a navy panel.
+  - The handover said not to use `innit-horizontal-*`, `innit-stacked-*` and `innit-nav-*` because they carried
+    the endorsement line. In the logo spec they no longer do, so they are used as the spec says.
 - **Lines:** brand line **"Gotta be innit to win it."** Campaign line **"Be in it."**
 - **Voice:** short, playful, British, straight about the chances: "You in?", "I'm in", "You're in.",
   "Not this time." Never: "change your life", "easy money", "guaranteed winner", "Last chance!!!", or false
@@ -45,15 +56,15 @@ Launch target: **1 April 2027**.
 - **Signature moments:** the ticket "punches" when payment completes ("You're in."); the live-draw countdown is a
   row of punch holes filling gold; the ticket is the favicon, app icon and loading state.
 - **References:**
-  - `docs/brand/innit-brand-book-2026-10.pdf`: brand book. Its layouts, colours, type and voice apply, but
-    **its endorsement line and K emblem are superseded**: ignore them.
+  - `docs/brand/innit-brand-book-with-logo-spec-2026-10.pdf`: brand book with the logo specification
+    (no endorsement line or K emblem anywhere).
   - `docs/design/draft-*-home.png`: early home drafts. Layout only; their uppercase "INNIT", "by Knightsbridge
     Luxury Group" line, K emblem and old tagline are out of date.
   - `docs/design/`: the full reference screen set (website home, draw, checkout, winners; app home, draw,
     "You're in", entries, live, limits; admin dashboard, draw builder, protection) is still to be supplied.
   - `public/prizes/`: sample prize photos (demo use only).
 - **Layout:** website top nav (What's on, Winners, How it works, Free entry), gold hero band with the headline
-  draw; app tab bar **Home / Live / Entries / Account**, monthly-limit pill (e.g. "£140 / £250") in the header,
+  draw and its prize photo filling the wide space beside the text on desktop; app tab bar **Home / Live / Entries / Account**, monthly-limit pill (e.g. "£140 / £250") in the header,
   category chips, draw cards with countdown and progress.
 
 ## 3. Product scope

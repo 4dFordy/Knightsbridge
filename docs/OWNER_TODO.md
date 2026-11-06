@@ -12,23 +12,35 @@ Status key: **OPEN** (needed now) · **LATER** (needed when we reach that phase)
 | # | Item | Why | Asked | Status |
 |---|---|---|---|---|
 | 1 | Connect Vercel to the GitHub repo | Preview links on every pull request | 2026-11-06 | DONE: project `innit` in the bin-yousef team, London region, previews need a Vercel login |
-| 2 | Review and merge pull request #1 ("Update the brief") | Makes the repo match your handover | 2026-11-06 | OPEN |
-| 3 | Upload the logo files: `innit-wordmark-*`, the ticket symbol and the app icon | The handover says they're in `docs/brand/`, but they aren't in the repo yet | 2026-11-06 | OPEN |
+| 2 | Review and merge pull requests #1 and #2 | Brief and app skeleton | 2026-11-06 | DONE |
+| 3 | Logo files | Supplied as the logo specification in the brand book; the logo is built in code from it | 2026-11-06 | DONE. Optional: the designer's PNG logo pack, for comparison |
 | 4 | Upload the reference screens (website: home, draw, checkout, winners; app: home, draw, "You're in", entries, live, limits; admin: dashboard, draw builder, protection) | The handover says they're in `docs/design/`; only two early home drafts are there | 2026-11-06 | OPEN |
-| 5 | Name and GitHub username of the developer who reviews money / personal-data / draw / admin changes | Required before merging those tasks | 2026-11-06 | OPEN |
-| 6 | Answer questions Q1–Q2 below | Q1 is a rule conflict; Q2 affects the draw-night timetable | 2026-11-06 | OPEN |
+| 5 | **Find a developer to review** money / personal-data / draw / admin changes (none yet) | Needed before merging task 1.4 onwards; see "Finding a reviewer" below | 2026-11-06 | OPEN |
+| 6 | Answer questions Q1–Q2 below | Q1 is a rule conflict; Q2 affects the draw-night timetable | 2026-11-06 | Q2 DONE; Q1 needs confirming |
 
 ## Questions and rule conflicts (Claude flagged these)
 
 | # | Question | Claude's recommendation | Asked | Status |
 |---|---|---|---|---|
-| **Q1** | **Postal entries after "Sold out".** Handover 2B says postal entries received before close are still added after the cap is reached. But the cap is locked and published, and the odds statement depends on it. Adding entries beyond the cap would break the published maximum and the odds. | Hold back a small **postal reserve** inside the cap (e.g. 2%). Paid sales show "Sold out" at cap minus reserve; postal entries use the reserve; the published maximum is never exceeded. Solicitor to confirm the reserve and the terms wording. | 2026-11-06 | OPEN |
-| **Q2** | **Close vs draw time.** Draws close at 20:00 and are drawn live at 20:00. The ledger must freeze and the drand round must arrive after close, so the reveal can't be at exactly 20:00. | Close at **20:00**; stream starts at 20:00 showing the freeze and entry-list hash; drand round due ~1 minute after close; two staff approve; winner revealed about **20:05**. | 2026-11-06 | OPEN |
+| **Q1** | **Postal entries after "Sold out".** Handover 2B says postal entries received before close are still added after the cap is reached. But the cap is locked and published, and the odds statement depends on it. Adding entries beyond the cap would break the published maximum and the odds. | Hold back a small **postal reserve** inside the cap (e.g. 2%). Paid sales show "Sold out" at cap minus reserve; postal entries use the reserve; the published maximum is never exceeded. Solicitor to confirm the reserve and the terms wording. | 2026-11-06 | **Owner (2026-11-06): \"specify online draw deadline\".** Claude's reading: no postal reserve; postal entries must arrive by the same deadline as online entries (the draw's close time), shown on every draw page; they count towards the cap, and once the cap is full no more entries of either kind are accepted. Awaiting owner confirmation, then solicitor. |
+| **Q2** | **Close vs draw time.** Draws close at 20:00 and are drawn live at 20:00. The ledger must freeze and the drand round must arrive after close, so the reveal can't be at exactly 20:00. | Close at **20:00**; stream starts at 20:00 showing the freeze and entry-list hash; drand round due ~1 minute after close; two staff approve; winner revealed about **20:05**. | 2026-11-06 | DONE: agreed by owner 2026-11-06 |
 | Q3 | **drand fallback** if the beacon is unavailable at draw time. | Fetch the committed round from several public drand mirrors. If the round is late, wait for it (published rounds can't change). If the drand network has halted and never produces that round, use the **first round produced after it**; the draw is delayed, never re-chosen. If drand is down for more than 48 hours, use a named backup beacon set out in the terms. Solicitor and independent reviewer to approve. | 2026-11-06 | LATER (phase 6) |
 | Q4 | **Per-person entry limit per draw**: the most entries one person can have in a single draw (paid + postal). | You decide; the handover says postal and paid share the same limit, but no number is set. | 2026-11-06 | LATER (phase 3) |
 | Q5 | **Launch-month mix at 5 draws a week** (April 2027): which categories, and do cars run? | You decide. | 2026-11-06 | LATER (phase 2) |
 | Q6 | **Default monthly spend limit for new players**, and the **highest limit** a player can raise to. | You decide (with the solicitor, under the DCMS code). | 2026-11-06 | LATER (phase 4) |
-| Q7 | **Brand book shows the endorsement line and K emblem**, which the handover now removes. | Brand book updated by your designer when convenient; Claude ignores those parts meanwhile. | 2026-11-06 | LATER |
+| Q7 | **Brand book shows the endorsement line and K emblem**, which the handover now removes. | Fixed in the new brand book with the logo spec. | 2026-11-06 | DONE |
+| Q8 | **Logo spec vs handover:** the handover said not to use `innit-horizontal/stacked/nav` files because they carried the endorsement line. The logo spec's versions don't, and it names `innit-nav` as the website header logo. | Use them as the spec says (done in task 1.2). | 2026-11-06 | Awaiting owner confirmation |
+
+## Finding a reviewer (item 5)
+
+You don't have a developer yet. Every task that touches money, personal data, the draw or the admin panel
+(Phase 1 tasks 4–7, and phases 2–6 and 10) should be checked by one before you merge it. Options:
+- A **freelance senior developer** for a few hours per phase, reviewing pull requests on GitHub
+  (e.g. via a UK agency, Toptal, or a recommendation). Ask for experience with **Next.js, PostgreSQL and payments**.
+- Your payment provider or accountant may know someone who has worked on UK prize-draw or e-commerce platforms.
+- Before launch you'll also need an independent **security review / penetration test** (Phase 11).
+
+Until then Claude keeps building, labels every pull request that needs review, and you can leave those unmerged.
 
 ## Phase 1: Foundation
 
