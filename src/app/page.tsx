@@ -1,17 +1,16 @@
 import { brand } from "@/brand/brand";
+import { Logo } from "@/components/Logo";
 import { SolicitorPlaceholder } from "@/components/SolicitorPlaceholder";
 
 /**
- * Holding page for Phase 1. The real home page (hero draw, "What's on" grid) is built in Phase 7.
- * The wordmark here is plain text until the logo files arrive (Phase 1, task 2).
+ * Holding page for Phase 1. The real home page (hero draw with its prize photo beside the text,
+ * "What's on" grid) is built in Phase 7.
  */
 export default function HomePage() {
   return (
     <div className="flex min-h-dvh flex-col">
       <header className="border-b border-line px-4 py-4 sm:px-8">
-        <p className="font-display text-3xl font-black lowercase tracking-tight text-ivory">
-          {brand.wordmark}
-        </p>
+        <Logo variant="nav" ground="navy" width={140} />
       </header>
 
       <main className="flex flex-1 flex-col">
