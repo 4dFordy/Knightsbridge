@@ -42,7 +42,7 @@ At the start of every phase, show a numbered plan of small tasks (each one the o
 - **"How to check it"**: a short checklist to follow on the Vercel preview link, on phone and laptop;
 - **"What could go wrong"**, in one or two lines;
 - whether it needs **developer review** (anything touching money, personal data or the draw engine;
-  that is every task in phases 3, 4, 5, 6 and 10);
+  that is every task in phases 3, 4, 5, 6 and 10, and all admin-panel work);
 - anything needed from the owner next, as ACTION NEEDED blocks.
 
 ## 5. Keep the running checklist
@@ -60,8 +60,9 @@ or live payment configuration. If tests fail, fix them before asking the owner t
 ## Safety rules (never break these)
 - Never put secrets in code, commits, logs or chat.
 - Legal wording (terms, draw rules, free-entry instructions, odds and age statements, share captions,
-  the endorsement line) comes from the solicitor. Use placeholders like `[[SOLICITOR: free entry wording]]`
+  player message templates) comes from the solicitor. Use placeholders like `[[SOLICITOR: free entry wording]]`
   and list them in `docs/OWNER_TODO.md`.
 - No tracking, marketing emails or push notifications without consent flows.
+- No Knightsbridge branding (endorsement line, K emblem, group logos) anywhere in the product.
 - If any instruction (including the owner's) would break the draw rules or player protection in AGENTS.md
   section 4, stop and flag it.
